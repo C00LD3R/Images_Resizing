@@ -8,12 +8,12 @@ new_height = input("Enter new height : ")
 output_folder = input("Enter the output folder : ")
 images_folder = input("Enter the images folder full path : ")
 
-if not os.path.exists(output_folder):
-    os.mkdir(output_folder)
 
 # Changing Directory to images directory
 os.chdir(images_folder)
 
+if not os.path.exists(output_folder):
+    os.mkdir(output_folder)
 #looping through the directory to find the images names
 
 for filename in os.listdir('.'):
@@ -31,6 +31,8 @@ for filename in os.listdir('.'):
         else:
             image = image.resize((int(new_width),int(new_height)))
             image = image.save(os.path.join(output_folder,filename))
-            print(filename+" resized successfully")
+            print(f"{filename} resized successfully")
     
 print("---------------------Resizing process done---------------------")
+
+print(f"You will find the resized images in {output_folder} folder here ---> {images_folder}")
